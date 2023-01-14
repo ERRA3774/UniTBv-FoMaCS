@@ -1,0 +1,62 @@
+/*
+Avem un rucsac cu care putem transporta o anumita greutate maxim G.
+Avem n obiecte de transportat si pentru fiecare obiect se cunoaste 
+greutatea sa si beneficiul obtinut de pe urma transportului.
+Se cere sa se determine ce obiecte pot fi transportate odata,
+astfel incat castigul sa fie maxim. Pentru rezolvarea problemei se
+va folosi structura (type struct).
+
+a. Problema continua: Ultimu obiect adaugat se poate taia, prin asta intelegem
+ca verificam daca putem adauga obiectul in intregime, adica daa prin adaugare 
+nu se depaseste greutatea propua, in caz contrar, se tai obiectul pastrand greutatea admisa.
+
+b. Problema discreta: Obiectele nu se pot taia, prin asta intelegem ca verificam
+daca putem adauga obiectul, adica daca prin adaugare nu se depaseste greutatea propusa.
+*/
+
+/*
+Oi{g_i, p_i}
+
+G = 45
+O1{10, 100}
+O2{10, 150}
+O3{15, 250}
+O4{10, 150}
+O5{10, 150}
+-----------------------------------------
+G = 55
+O1{10, 100}
+O2{10, 150}
+O3{10, 250}
+O4{20, 250}
+O5{30, 3000}
+
+-> {O1, O2, O3, O4} -> Profit: 750
+-> {O5} -> Profit: 3000
+1) Se poate face ale
+-----------------------------------------
+G = 40
+O1{10, 100}
+O2{10, 150}
+O3{10, 250}
+O4{20, 250}
+O5{35, 600}
+-> {05} -> Profit: 600
+-> {O2, O3, O4} -> Profit: 650
+
+-----------------------------------------
+O1{10, 250}
+O2{15, 300}
+O3{20, 400}
+O4{25, 750}
+
+p_i/g_i = pretul pe unitatea de obiect
+
+*/
+
+/*
+   b. Problema discreta:
+   1) Pentru profit cat mao mare ar trebui sa am cat mai multe obiecte in rucsac -> greutate cat mai mica
+   2) Pentru profit cat mai mare ar trebui sa alegem obiecte cu pretul cat mai mare
+   3) Se poate face alegerea obiectelor dupa criteriul pret/greutate dupa cel mai mare
+*/
