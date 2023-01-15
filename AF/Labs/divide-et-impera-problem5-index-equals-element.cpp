@@ -7,7 +7,52 @@
 #include <vector>
 #include <algorithm>
 
+void citire_vector(std::vector<int>& vec);
+void afisare_vector(std::vector<int>& vec);
+int solutie_iterativ(std::vector<int>& vec);
+int solutie_recursiv(std::vector<int>& vec, int st, int dr);
+void afisare_solutie_iterativ(std::vector<int>& vec);
+void afisare_solutie_recursiv(std::vector<int>& vec);
 void print_other_test_cases();
+
+int main()
+{
+	print_other_test_cases();
+
+	std::vector<int> vec;
+	citire_vector(vec);
+	afisare_vector(vec);
+	afisare_solutie_iterativ(vec);
+
+	return 0;
+}
+
+void citire_vector(std::vector<int>& vec)
+{
+	int n;
+
+	std::cout << "Introduceti numarul de elemente:\nn = ";
+	std::cin >> n;
+
+	vec.resize(n);
+
+	for (int i = 0; i < n; i++)
+	{
+		std::cin >> vec[i];
+	}
+
+	sort(vec.begin(), vec.end(), std::greater<int>()); // reverse
+}
+
+void afisare_vector(std::vector<int>& vec)
+{
+	for (int i = 0; i < vec.size(); i++)
+	{
+		std::cout << vec[i] << " ";
+	}
+
+	std::cout << std::endl;
+}
 
 int solutie_iterativ(std::vector<int>& vec)
 {
@@ -56,33 +101,6 @@ int solutie_recursiv(std::vector<int>& vec, int st, int dr)
 	}
 }
 
-void citire_vector(std::vector<int>& vec)
-{
-	int n;
-
-	std::cout << "Introduceti numarul de elemente:\nn = ";
-	std::cin >> n;
-
-	vec.resize(n);
-
-	for (int i = 0; i < n; i++)
-	{
-		std::cin >> vec[i];
-	}
-
-	sort(vec.begin(), vec.end(), std::greater<int>()); // reverse
-}
-
-void afisare_vector(std::vector<int>& vec)
-{
-	for (auto i = 0; i < vec.size(); i++)
-	{
-		std::cout << vec[i] << " ";
-	}
-
-	std::cout << std::endl;
-}
-
 void afisare_solutie_iterativ(std::vector<int>& vec)
 {
 	int sol = solutie_iterativ(vec);
@@ -107,21 +125,9 @@ void afisare_solutie_recursiv(std::vector<int>& vec)
 	}
 }
 
-int main()
-{
-	print_other_test_cases();
-
-	std::vector<int> vec;
-	citire_vector(vec);
-	afisare_vector(vec);
-	afisare_solutie_iterativ(vec);
-
-	return 0;
-}
-
 void print_other_test_cases()
 {
-	std::vector<int> vec = { 0, 1, 2, 3, 4, 5, 6};
+	std::vector<int> vec = { 0, 1, 2, 3, 4, 5, 6 };
 	sort(vec.begin(), vec.end(), std::greater<int>());
 	afisare_vector(vec);
 	afisare_solutie_iterativ(vec);
@@ -133,7 +139,7 @@ void print_other_test_cases()
 	afisare_solutie_iterativ(vec1);
 	afisare_solutie_recursiv(vec1);
 
-	std::vector<int> vec2 = {33,23,67,95,59,19,15,7,0,1,2,3,4,5,6  };
+	std::vector<int> vec2 = { 33, 23, 67, 95, 59, 19, 15, 7, 0, 1, 2, 3, 4, 5, 6 };
 	sort(vec2.begin(), vec2.end(), std::greater<int>());
 	afisare_vector(vec2);
 	afisare_solutie_iterativ(vec2);
