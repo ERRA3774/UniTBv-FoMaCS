@@ -1,0 +1,41 @@
+Intr-un sat se afla mai multe case
+Fiecare casa are urmatoarele caracteristici:
+id
+culoare
+numar de membri
+cu/fara etaj
+a) Sa se afiseze diferenta dintre numarul caselor de culoare verde si numarul caselor de culoare rosie
+b) Sa se afiseze id-ul caselor in ordinea crescatoare a membrilor (se cere implementarea eficienta, fara folosirea de functii predefinite in C++)
+c) Sa se afiseze cat % din case sunt cu etaj
+d) Mos Craciun isi propune sa lase in noapte de Ajun cate un cadou fiecarui membru din sat
+   El are mai multe ajutoare, fiecare putand sa care un anumit numar de cadouri
+   Sa se determine numarul minim de ajutoare pe care le va lua mosul cu el in seara de Ajun.
+   Sa se justifice metoda de programare alease pentru rezolvare.
+   Sa se precizeze complexitatea obtinuta(a se explica maniera de obtinere).
+   Observatie! Se presupune ca numarul de ajutoare este suficient pentru numarul de membri din sat
+   Un exemplu este invalid daca numarul de ajutoare este mai mic decat numarul de membri din sat
+   INVALID: Daca in sat sunt casele: 10 20 15 13 12
+                Iar ajutoarele sunt: 5 2 10 3
+   Atunci exemplul este invalid deoarece numarul de ajutoare este mai mic decat numarul total de membri din sat
+
+   
+   VALID: Daca in sat sunt casele: 10 7 2 5
+                Iar ajutoare sunt: 5 10 3 10 2 4 1
+          Se vor alege: 
+          10 -> reuseste sa ofere cadouri complet pentru prima casa
+          10 -> va oferi cadouri pentru a doua si a treia casa, respectiv unui membru din a patra casa
+           5 -> va oferi restul de cadouri pentru ultima casa
+
+  VALID: Daca in sat sunt casele: 30 10 5
+                Iar ajutoare sunt: 35 9 14
+          Se vor alege: 
+          35 -> va oferi cadouri pentru prima casa, si urmatorii 5 membri din a doua casa
+          14 -> va oferi cadouri pentru a restul din a doua casa, si ultima casa complet
+
+  VALID: Daca in sat sunt casele: 12 14 10
+                Iar ajutoare sunt: 20 10 14
+          Se vor alege: 
+          20 -> va oferi cadouri pentru prima casa, si urmatorii 8 membri din a doua casa
+          14 -> va oferi cadouri pentru a restul din a doua casa, si urmatorii 8 membri din a treia casa
+          10 -> va oferi cadouri celor 2 membri ramasi din ultima casa
+ 
