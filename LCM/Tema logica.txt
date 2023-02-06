@@ -87,9 +87,15 @@ d. -0.0101(2) * 2^-127 = 1100000001010000 (binar)
 • f1(x1, x2, x3) = x1x2+(!x1)x2x3
 • f1(x1, x2, x3) = x1x2+(!x1)x2(!x3)+x2
 
-Circuitul logic corespunzător funcţiei f1(x1, x2) = x1x2 + (!x2) poate fi realizat prin intermediul unui AND gate pentru x1 şi x2, urmat de un OR gate cu negaţia lui x2.
-Circuitul logic corespunzător funcţiei f1(x1, x2, x3) = x1x2 + (!x1)x2x3 poate fi realizat prin intermediul unui AND gate pentru x1 şi x2, un AND gate pentru negaţia lui x1, x2 şi x3, şi un OR gate între aceste două rezultate.
-Circuitul logic corespunzător funcţiei f1(x1, x2, x3) = x1x2 + (!x1)x2(!x3) + x2 poate fi realizat prin intermediul unui AND gate pentru x1 şi x2, un AND gate pentru negaţia lui x1, x2 şi negaţia lui x3, un OR gate între aceste două rezultate, şi un OR gate cu x2.
+Circuitul logic corespunzător funcţiei f1(x1, x2) = x1x2 + (!x2) 
+poate fi realizat prin intermediul unui AND gate pentru x1 şi x2, 
+urmat de un OR gate cu negaţia lui x2.
+Circuitul logic corespunzător funcţiei f1(x1, x2, x3) = x1x2 + (!x1)x2x3 
+poate fi realizat prin intermediul unui AND gate pentru x1 şi x2, un AND gate 
+pentru negaţia lui x1, x2 şi x3, şi un OR gate între aceste două rezultate.
+Circuitul logic corespunzător funcţiei f1(x1, x2, x3) = x1x2 + (!x1)x2(!x3) + x2 
+poate fi realizat prin intermediul unui AND gate pentru x1 şi x2, un AND gate pentru 
+negaţia lui x1, x2 şi negaţia lui x3, un OR gate între aceste două rezultate, şi un OR gate cu x2.
 
 1. Determinaţi forma normală disjunctivă pentru următoarele funcţii
 booleene:
@@ -185,17 +191,26 @@ booleene:
 !De desenat circuite: Apoi determinaţi circuitele logice corepsunzătoare formelor lor
 minimale. 
 
-Pentru a simplifica funcțiile booleene folosind diagrame Karnaugh, trebuie să identificăm termenii implicați și să grupăm celulele în perechi sau grupuri mai mari astfel încât să putem elimina celulele redundante și să obținem o formulă minimă.
+Pentru a simplifica funcțiile booleene folosind diagrame Karnaugh, trebuie să identificăm 
+termenii implicați și să grupăm celulele în perechi sau grupuri mai mari astfel încât să putem 
+elimina celulele redundante și să obținem o formulă minimă.
 
 f(x1, x2, x3) = ΠM (0, 2, 4, 5):
-Pentru această funcție, valorile din tabelul de adevăr sunt 1 pentru celulele 0, 2, 4 și 5 și 0 pentru celelalte celule. Folosind diagrama Karnaugh, putem grupă celulele 0 și 4 și celulele 2 și 5 pentru a obține forma minimă a funcției: f(x1, x2, x3) = x1'x2 + x2'x3.
+Pentru această funcție, valorile din tabelul de adevăr sunt 1 pentru celulele 0, 2, 4 și 5 și 0 pentru 
+celelalte celule. Folosind diagrama Karnaugh, putem grupă celulele 0 și 4 și celulele 2 și 5 pentru 
+a obține forma minimă a funcției: f(x1, x2, x3) = x1'x2 + x2'x3.
 
 f(x1, x2, x3, x4) = ΠM (2, 4, 6, 11, 12, 14):
-Pentru această funcție, valorile din tabelul de adevăr sunt 1 pentru celulele 2, 4, 6, 11, 12 și 14 și 0 pentru celelalte celule. Folosind diagrama Karnaugh, putem grupă celulele 2 și 6, celulele 4 și 12 și celula 11 și 14 pentru a obține forma minimă a funcției: f(x1, x2, x3, x4) = x1'x2 + x3'x4.
+Pentru această funcție, valorile din tabelul de adevăr sunt 1 pentru celulele 2, 4, 6, 11, 12 și 14 și 0 pentru 
+celelalte celule. Folosind diagrama Karnaugh, putem grupă celulele 2 și 6, celulele 4 și 12 și celula 11 și 14 pentru 
+a obține forma minimă a funcției: f(x1, x2, x3, x4) = x1'x2 + x3'x4.
 
-Circuitele logice corespunzătoare formelor lor minimale pot fi construite utilizând porti logice, cum ar fi AND, OR și NOT. De exemplu, pentru prima funcție, circuitul logic poate fi construit utilizând două porti OR conectate la două porti NOT conectate la intrare.
+Circuitele logice corespunzătoare formelor lor minimale pot fi construite utilizând porti logice, cum ar fi AND, OR și NOT. 
+De exemplu, pentru prima funcție, circuitul logic poate fi construit utilizând două porti OR conectate la două porti NOT 
+conectate la intrare.
 
-Pentru a construi un circuit logic pentru a implementa forma minimă a unei funcții booleene, trebuie să fie familiar cu portile logice și cu implementarea acestora utilizând circuitele integrate.
+Pentru a construi un circuit logic pentru a implementa forma minimă a unei funcții booleene, trebuie să fie familiar cu portile logice 
+și cu implementarea acestora utilizând circuitele integrate.
 
 Folosind metoda Quine-McCluskey, simplificaţi următoarele funcţii
 booleene:
@@ -204,7 +219,8 @@ booleene:
 !De desenat circuite: Apoi determinaţi circuitele logice corepsunzătoare formelor lor
 minimale
 
-Metoda Quine-McCluskey este un algoritm utilizat pentru simplificarea funcțiilor booleene, prin eliminarea termenilor redundant sau inutili. Acest algoritm presupune următoarele pași:
+Metoda Quine-McCluskey este un algoritm utilizat pentru simplificarea funcțiilor booleene, prin eliminarea termenilor redundant sau inutili. 
+Acest algoritm presupune următoarele pași:
 
 Crearea tabelului de căutare cu toate combinațiile posibile de intrare.
 
@@ -302,6 +318,3 @@ f(x3, x2, x1) = x1⊕ x2 ⊕ x3x1⊕ x3x2.
 f(x3, x2, x1) = x1 ⊕ x2 ⊕ x3x1 ⊕ x3x2
 Reed-Müller generalizată de polaritate 4:
 f(x3, x2, x1) = R4(x1, x2, x3x1, x3x2)
-
-
-
