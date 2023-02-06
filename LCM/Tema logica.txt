@@ -1,0 +1,307 @@
+M2.U3.6. Test de evaluare a cunoştinţelor
+Scrieţi reprezentarea în standardul IEEE 754 în precizie simplă a următoarelor
+numere: 
++1.10101(2)*2^13, -1.001(2)*2^-13), +0.101(2)*2^-127, -0.111(2)*2^-127. 
+
+a. +1.10101(2) * 2^13 = 0011111000101000 (binar)
+b. -1.001(2) * 2^-13 = 1100000111100000 (binar)
+c. +0.101(2) * 2^-127 = 0011111101000000 (binar)
+d. -0.111(2) * 2^-127 = 1100000011000000 (binar)
+
+Temă de control
+1. Determinaţi codurile directe pe 8 biţi ale următoarelor numere:
+14, 52, +0, -0, -121.
+
+Codurile directe pe 8 biți ale numerelor sunt:
+a. 14 = 00001110 (binar)
+b. 52 = 00110100 (binar)
+c. +0 = 00000000 (binar)
+d. -0 = 00000000 (binar)
+e. -121 = 10000101 (binar)
+
+2. Determinaţi codurile inverse pe 8 biţi ale următoarelor numere:
+14, 52, +0, -0, -121.
+
+Codurile inverse pe 8 biți ale numerelor sunt:
+a. 14 = 11110010 (binar)
+b. 52 = 11001011 (binar)
+c. +0 = 00000000 (binar)
+d. -0 = 00000000 (binar)
+e. -121 = 01111011 (binar)
+
+3. Determinaţi codurile complementare pe 8 biţi ale următoarelor numere:
+14, 52, +0, -0, -121.
+
+Codurile complementare pe 8 biți ale numerelor sunt:
+a. 14 = 00001110 (binar)
+b. 52 = 00110100 (binar)
+c. +0 = 00000000 (binar)
+d. -0 = 00000000 (binar)
+e. -121 = 01111011 (binar)
+
+4. Adunaţi numerele:
+29 şi 62,
+55 şi -65,
+-101 şi -56
+în cod complementar pe 8 biţi.
+
+Adunarea numerelor în cod complementar pe 8 biți:
+a. 29 + 62 = 11100101 (binar), rezultatul este corect
+b. 55 + -65 = 10100100 (binar), rezultatul este corect
+c. -101 + -56 = 11001101 (binar), rezultatul este corect
+
+5. Scădeţi numerele:
+84 şi 52,
+88 şi -5,
+-94 şi -12
+în cod complementar pe 8 biţi.
+
+Scăderea numerelor în cod complementar pe 8 biți:
+a. 84 - 52 = 00010010 (binar), rezultatul este corect
+b. 88 - -5 = 01011110 (binar), rezultatul este corect
+c. -94 - -12 = 11001110 (binar), rezultatul este corect
+
+6. Înmulţiţi numerele:
+6 şi 11,
+7 şi 15,
+-12 şi 7
+în cod complementar pe 8 biţi.
+La sfărşitul fiecărei operaţii spuneţi dacă rezultatul este corect. Justificaţivă răspunsul.
+
+Înmulțirea numerelor în cod complementar pe 8 biți:
+a. 6 * 11 = 00000110 (binar) * 00001011 (binar) = 00110100 (binar), rezultatul este corect
+b. 7 * 15 = 00000111 (binar) * 00001111 (binar) = 00010111 (binar), rezultatul este corect
+c. -12 * 7 = 11110100 (binar) * 00000111 (binar) = 11000011 (binar), rezultatul este corect
+
+7. Scrieţi reprezentarea în standardul IEEE 754 în precizie simplă a
+următoarelor numere: +1.10101(2)*2^33, -1.0101(2)*2^-3, +0.1001(2)*2^-127, -0.0101(2)*2^-127.
+
+Reprezentările în standardul IEEE 754 în precizie simplă ale numerelor sunt:
+a. +1.10101(2) * 2^33 = 01000000110101000 (binar)
+b. -1.0101(2) * 2^-3 = 1111110101101000 (binar)
+c. +0.1001(2) * 2^-127 = 0011111110010000 (binar)
+d. -0.0101(2) * 2^-127 = 1100000001010000 (binar)
+
+1. Determinaţi circuitele logice corespunzătoare următoarelor funcţii:
+• f1(x1, x2) = x1x2+(!x2)
+• f1(x1, x2, x3) = x1x2+(!x1)x2x3
+• f1(x1, x2, x3) = x1x2+(!x1)x2(!x3)+x2
+
+Circuitul logic corespunzător funcţiei f1(x1, x2) = x1x2 + (!x2) poate fi realizat prin intermediul unui AND gate pentru x1 şi x2, urmat de un OR gate cu negaţia lui x2.
+Circuitul logic corespunzător funcţiei f1(x1, x2, x3) = x1x2 + (!x1)x2x3 poate fi realizat prin intermediul unui AND gate pentru x1 şi x2, un AND gate pentru negaţia lui x1, x2 şi x3, şi un OR gate între aceste două rezultate.
+Circuitul logic corespunzător funcţiei f1(x1, x2, x3) = x1x2 + (!x1)x2(!x3) + x2 poate fi realizat prin intermediul unui AND gate pentru x1 şi x2, un AND gate pentru negaţia lui x1, x2 şi negaţia lui x3, un OR gate între aceste două rezultate, şi un OR gate cu x2.
+
+1. Determinaţi forma normală disjunctivă pentru următoarele funcţii
+booleene:
+• f(x1, x2) = (!x2)+x1.
+• f(x1, x2, x3) = (!x2)+x1(!x3)+x1x3 
+
+Forma normală disjunctivă pentru f(x1, x2) = (!x2)+x1 este:
+f(x1, x2) = x1 + x2'
+
+Forma normală disjunctivă pentru f(x1, x2, x3) = (!x2)+x1(!x3)+x1x3 este:
+f(x1, x2, x3) = x1 (x3 + x3') + x2' = x1 + x2'
+
+2. Determinaţi forma normală disjunctivă pentru următoarele funcţii
+booleene:
+• f(x1, x2) = (!x2)+x1.
+• f(x1, x2, x3) = (!x2)+x1(!x3)+x1x3 
+
+Forma normală disjunctivă pentru f(x1, x2) = (!x2)+x1 este:
+f(x1, x2) = x1 + x2'
+
+Forma normală disjunctivă pentru f(x1, x2, x3) = (!x2)+x1(!x3)+x1x3 este:
+f(x1, x2, x3) = x1 (x3 + x3') + x2' = x1 + x2'
+
+Determinaţi forma normală disjunctivă şi forma normală conjunctivă a
+funcţiei booleene date prin următorul tabel de adevăr:
+x1    x2    x3    f(x1, x2, x3)
+0     0     0     1
+0     0     1     0
+0     1     0     1
+0     1     1     0
+1     0     0     1
+1     0     1     0
+1     1     0     1
+1     1     1     1 
+
+Pentru a determina forma normală disjunctivă (DNF) şi forma normală conjunctivă (CNF) a funcţiei booleene, putem utiliza metoda minimizării.
+
+Forma normală disjunctivă (DNF):
+f(x1, x2, x3) = (x1'x2'x3') + (x1'x2x3) + (x1x2'x3) + x1x2x3
+
+Forma normală conjunctivă (CNF):
+f(x1, x2, x3) = (x1 + x2' + x3') (x1 + x2 + x3') (x1' + x2 + x3) (x1' + x2' + x3)
+
+3. Folosind diagrame Karnaugh, simplificaţi următoarele funcţii
+booleene:
+• f(x1, x2, x3) = Σm(0, 2, 4, 6).
+• f(x1, x2, x3, x4) = Σm(0, 1, 2, 4, 6, 9, 12, 13)
+
+!De desenat circuite: Apoi determinaţi circuitele logice corepsunzătoare formelor lor
+minimale
+
+a. Funcţia f(x1, x2, x3) = Σm(0, 2, 4, 6) poate fi simplificată folosind o diagramă Karnaugh.
+f(x1, x2, x3) = Σm(0, 2, 4, 6)
+
+Diagrama Karnaugh arată astfel:
+
+    00 01 11 10
+00  1  0  1  0
+01  0  0  1  0
+11  1  1  1  0
+10  0  0  0  0
+
+Minimizând această diagramă, putem determina expresia minimizată a funcţiei:
+f(x1, x2, x3) = x1'x3 + x1x3
+
+b. Funcţia f(x1, x2, x3, x4) = Σm(0, 1, 2, 4, 6, 9, 12, 13) poate fi simplificată folosind o diagramă Karnaugh.
+f(x1, x2, x3, x4) = Σm(0, 1, 2, 4, 6, 9, 12, 13)
+
+Diagrama Karnaugh arată astfel:
+
+     0000 0001 0011 0010
+0000 1    1    1    0
+0001 1    1    0    0
+0011 1    0    0    0
+0010 0    0    0    0
+0110 1    1    1    0
+0111 1    1    0    0
+0101 1    0    0    0
+0100 0    0    0    0
+1100 1    1    1    0
+1101 1    1    0    0
+1111 1    0    0    0
+1110 0    0    0    0
+
+Minimizând această diagramă, putem determina expresia minimizată a funcţiei:
+f(x1, x2, x3, x4) = x1'x2'x3'x4 + x1'x2'x3x4 + x1'x2x3'x4 + x1x2x3x4
+
+4. Folosind diagrame Karnaugh, simplificaţi următoarele funcţii
+booleene:
+• f(x1, x2, x3) = ΠM(0, 2, 4, 5).
+• f(x1, x2, x3, x4) = ΠM (2, 4, 6, 11, 12, 14).
+
+!De desenat circuite: Apoi determinaţi circuitele logice corepsunzătoare formelor lor
+minimale. 
+
+Pentru a simplifica funcțiile booleene folosind diagrame Karnaugh, trebuie să identificăm termenii implicați și să grupăm celulele în perechi sau grupuri mai mari astfel încât să putem elimina celulele redundante și să obținem o formulă minimă.
+
+f(x1, x2, x3) = ΠM (0, 2, 4, 5):
+Pentru această funcție, valorile din tabelul de adevăr sunt 1 pentru celulele 0, 2, 4 și 5 și 0 pentru celelalte celule. Folosind diagrama Karnaugh, putem grupă celulele 0 și 4 și celulele 2 și 5 pentru a obține forma minimă a funcției: f(x1, x2, x3) = x1'x2 + x2'x3.
+
+f(x1, x2, x3, x4) = ΠM (2, 4, 6, 11, 12, 14):
+Pentru această funcție, valorile din tabelul de adevăr sunt 1 pentru celulele 2, 4, 6, 11, 12 și 14 și 0 pentru celelalte celule. Folosind diagrama Karnaugh, putem grupă celulele 2 și 6, celulele 4 și 12 și celula 11 și 14 pentru a obține forma minimă a funcției: f(x1, x2, x3, x4) = x1'x2 + x3'x4.
+
+Circuitele logice corespunzătoare formelor lor minimale pot fi construite utilizând porti logice, cum ar fi AND, OR și NOT. De exemplu, pentru prima funcție, circuitul logic poate fi construit utilizând două porti OR conectate la două porti NOT conectate la intrare.
+
+Pentru a construi un circuit logic pentru a implementa forma minimă a unei funcții booleene, trebuie să fie familiar cu portile logice și cu implementarea acestora utilizând circuitele integrate.
+
+Folosind metoda Quine-McCluskey, simplificaţi următoarele funcţii
+booleene:
+• f(x1, x2, x3) = Σm(1, 3, 5, 7).
+• f(x1, x2, x3, x4) = Σm(0, 4, 5, 8, 9, 12, 14).
+!De desenat circuite: Apoi determinaţi circuitele logice corepsunzătoare formelor lor
+minimale
+
+Metoda Quine-McCluskey este un algoritm utilizat pentru simplificarea funcțiilor booleene, prin eliminarea termenilor redundant sau inutili. Acest algoritm presupune următoarele pași:
+
+Crearea tabelului de căutare cu toate combinațiile posibile de intrare.
+
+Identificarea termenilor care au același număr de literale negated.
+
+Combinarea termenilor identice sau diferite prin intermediul unei coloane intermediare.
+
+Repetarea acestui proces până când nu mai există termeni care se pot combina.
+
+Generarea formei minime a funcției.
+
+f(x1, x2, x3) = Σm(1, 3, 5, 7).
+
+Tabelul de căutare ar arăta astfel:
+
+x3 x2 x1 | f(x1, x2, x3)
+0  0  0  | 0
+0  0  1  | 0
+0  1  0  | 0
+0  1  1  | 1
+1  0  0  | 0
+1  0  1  | 1
+1  1  0  | 1
+1  1  1  | 1
+
+Tabelul intermediar ar arăta astfel:
+
+x3 x2 x1 |
+*  *  01 |
+*  01  - |
+01  -  - |
+
+Forma minimă: f(x1, x2, x3) = x1'x2 + x1x3
+
+f(x1, x2, x3, x4) = Σm(0, 4, 5, 8, 9, 12, 14)
+Tabelul de căutare ar arăta astfel:
+x4 x3 x2 x1 | f(x1, x2, x3, x4)
+0  0  0  0  | 0
+0  0  0  1  | 1
+0  0  1  0  | 0
+0  0  1  1  | 0
+0  1  0  0  | 0
+0  1  0  1  | 0
+0  1  1  0  | 0
+0  1  1  1  | 0
+1  0  0  0  | 1
+1  0  0  1  | 1
+1  0  1  0  | 0
+1  0  1  1  | 0
+1  1  0  0  | 1
+1  1  0  1  | 1
+1  1  1  0  | 0
+1  1  1  1  | 0
+
+Tabelul intermediar ar arăta astfel:
+
+x4 x3 x2 x1 |
+0  0  01  - |
+0  01  -  - |
+1  0  01  - |
+
+1. Determinaţi expresia Reed-Müller generalizată de polaritate 2 pentru
+f(x2, x1) = 1 ⊕ x1⊕ x2x1
+2. Determinaţi expresia Reed-Müller generalizată de polaritate 6 pentru
+f(x3, x2, x1) = x1⊕ x2 ⊕ x3x1⊕ x3x2.
+
+Expresia Reed-Müller generalizată de polaritate 2 pentru f(x2, x1) = 1 ⊕ x1⊕ x2x1 este:
+fRM(x2, x1) = (1, x1, x2x1, x2)
+
+Expresia Reed-Müller generalizată de polaritate 6 pentru f(x3, x2, x1) = x1⊕ x2 ⊕ x3x1⊕ x3x2 este:
+fRM(x3, x2, x1) = (x1, x2, x3x1, x3x2, x3, x3x1x2)
+
+2. Determinaţi expresiile Reed-Müller corespunzătoare funcţiilor
+booleene:
+• f1(x2, x1) = Σm(0, 3)
+105
+• f1(x3, x2, x1) = Σm(1, 2, 4, 7). 
+
+Expresiile Reed-Müller corespunzătoare funcţiilor booleene:
+• f1(x2, x1) = Σm(0, 3) = x2'x1 + x2x1'
+• f1(x3, x2, x1) = Σm(1, 2, 4, 7) = x3'x2'x1 + x3'x2x1 + x3x2'x1' + x3x2x1
+
+Acestea sunt expresiile Reed-Müller corespunzătoare celor două funcţii booleene.
+
+3. Determinaţi expresia Reed-Müller generalizată de polaritate 1 pentru
+f(x2, x1) = 1 ⊕ x1⊕ x2x1
+
+f(x2, x1) = 1 ⊕ x1 ⊕ x2x1
+Reed-Müller generalizată de polaritate 1:
+f(x2, x1) = R1(1, x1, x2x1)
+
+4. Determinaţi expresia Reed-Müller generalizată de polaritate 4 pentru
+f(x3, x2, x1) = x1⊕ x2 ⊕ x3x1⊕ x3x2.
+
+f(x3, x2, x1) = x1 ⊕ x2 ⊕ x3x1 ⊕ x3x2
+Reed-Müller generalizată de polaritate 4:
+f(x3, x2, x1) = R4(x1, x2, x3x1, x3x2)
+
+
+
