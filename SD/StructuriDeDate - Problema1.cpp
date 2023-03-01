@@ -1,0 +1,81 @@
+// Problema 1
+// Numim perechea (x,y) pereche ordonata daca x < y
+// a) Sa se verifice daca un vector contine doar perechi ordonate (care satisfac conditia de mai sus. (0.5p)
+// ??? vec = {1,2,3,4}, se verifica {1,2}, {2,3}, {3,4} sau {1,2}, {3,4}?
+// b) Sa se verifice daca oricare x din prima jumatate a vectorului formeaza o pereche ordonata cu oricare y din cea de-a doua jumatate. (1p)
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#define LOG(x, y) std::cout <<"[D] " << x << " " << y << std::endl;
+
+void Problema1A();
+bool ContineDoarPerechiOrdonate(std::vector<int>& vec);
+void Problema1B();
+bool FormeazaPerecheOrdonata(std::vector<int>& vec);
+
+int main()
+{
+	Problema1A();
+    Problema1B();
+}
+
+void Problema1A()
+{
+	std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+	ContineDoarPerechiOrdonate(vec)
+		? std::cout << "Contine doar perechi ordonate." << std::endl
+		: std::cout << "NU contine doar perechi ordonate." << std::endl;
+}
+
+bool ContineDoarPerechiOrdonate(std::vector<int>& vec)
+{
+	if (vec.size() % 2 == 1)
+	{
+		std::cout << "Vectorul are numar impar de elemente." << std::endl;
+		return false;
+	}
+
+	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it += 2)
+	{
+		if (*it >= *it + 1)
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+void Problema1B()
+{
+	std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 4 };
+
+	FormeazaPerecheOrdonata(vec)
+		? std::cout << "Oricare x si y formeaza perechi ordonate." << std::endl
+		: std::cout << "Oricare x si y NU formeaza perechi ordonate." << std::endl;
+}
+
+bool FormeazaPerecheOrdonata(std::vector<int>& vec)
+{
+	int mij = vec.size() / 2;
+	std::vector<int> vec1;
+	std::vector<int> vec2;
+	vec1.assign(vec.begin(), vec.begin() + mij);
+	vec2.assign(vec.begin() + mij, vec.end());
+
+	for (std::vector<int>::iterator it = vec1.begin(); it != vec1.end(); it++)
+	{
+		for (std::vector<int>::iterator jt = vec2.begin(); jt != vec2.end(); jt++)
+		{
+			LOG(*it, *jt);
+			if (*it >= *jt)
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
