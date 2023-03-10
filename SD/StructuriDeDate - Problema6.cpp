@@ -6,7 +6,6 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #define LOG(x, y) std::cout <<"[D] " << x << " " << y << std::endl;
 
 struct Punct
