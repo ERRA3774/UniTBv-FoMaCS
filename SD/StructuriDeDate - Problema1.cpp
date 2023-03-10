@@ -17,12 +17,12 @@ bool FormeazaPerecheOrdonata(std::vector<int>& vec);
 int main()
 {
 	Problema1A();
-    Problema1B();
+	Problema1B();
 }
 
 void Problema1A()
 {
-	std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	std::vector<int> vec{ 0, 1, 4, 5, 8, 9, 12, 13, 16, 19 };
 
 	ContineDoarPerechiOrdonate(vec)
 		? std::cout << "Contine doar perechi ordonate." << std::endl
@@ -37,9 +37,10 @@ bool ContineDoarPerechiOrdonate(std::vector<int>& vec)
 		return false;
 	}
 
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it += 2)
+	for (int i = 0; i < vec.size(); i += 2)
 	{
-		if (*it >= *it + 1)
+		LOG(vec[i], vec[i+1]);
+		if (vec[i] >= vec[i + 1])
 		{
 			return false;
 		}
@@ -65,12 +66,12 @@ bool FormeazaPerecheOrdonata(std::vector<int>& vec)
 	vec1.assign(vec.begin(), vec.begin() + mij);
 	vec2.assign(vec.begin() + mij, vec.end());
 
-	for (std::vector<int>::iterator it = vec1.begin(); it != vec1.end(); it++)
+	for (int i = 0; i < vec1.size(); i++)
 	{
-		for (std::vector<int>::iterator jt = vec2.begin(); jt != vec2.end(); jt++)
+		for (int j = 0; j < vec2.size(); j++)
 		{
-			LOG(*it, *jt);
-			if (*it >= *jt)
+			LOG(vec1[i], vec2[j]);
+			if (vec1[i] >= vec2[j])
 			{
 				return false;
 			}
