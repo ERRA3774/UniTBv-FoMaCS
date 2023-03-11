@@ -6,30 +6,29 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #define LOG(x, y) std::cout <<"[D] " << x << " " << y << std::endl;
 
-void Problema1A();
-bool ContineDoarPerechiOrdonate(std::vector<int>& vec);
-void Problema1B();
-bool FormeazaPerecheOrdonata(std::vector<int>& vec);
+void problema1A();
+bool contineDoarPerechiOrdonate(std::vector<int>& vec);
+void problema1B();
+bool formeazaPerecheOrdonata(std::vector<int>& vec);
 
 int main()
 {
-	Problema1A();
-	Problema1B();
+	problema1A();
+	problema1B();
 }
 
-void Problema1A()
+void problema1A()
 {
 	std::vector<int> vec{ 0, 1, 4, 5, 8, 9, 12, 13, 16, 19 };
 
-	ContineDoarPerechiOrdonate(vec)
+	contineDoarPerechiOrdonate(vec)
 		? std::cout << "Contine doar perechi ordonate." << std::endl
 		: std::cout << "NU contine doar perechi ordonate." << std::endl;
 }
 
-bool ContineDoarPerechiOrdonate(std::vector<int>& vec)
+bool contineDoarPerechiOrdonate(std::vector<int>& vec)
 {
 	for (int i = 0; i < vec.size() - 1; i++)
 	{
@@ -43,29 +42,25 @@ bool ContineDoarPerechiOrdonate(std::vector<int>& vec)
 	return true;
 }
 
-void Problema1B()
+void problema1B()
 {
 	std::vector<int> vec{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 4 };
 
-	FormeazaPerecheOrdonata(vec)
+	formeazaPerecheOrdonata(vec)
 		? std::cout << "Oricare x si y formeaza perechi ordonate." << std::endl
 		: std::cout << "Oricare x si y NU formeaza perechi ordonate." << std::endl;
 }
 
-bool FormeazaPerecheOrdonata(std::vector<int>& vec)
+bool formeazaPerecheOrdonata(std::vector<int>& vec)
 {
 	int mij = vec.size() / 2;
-	std::vector<int> vec1;
-	std::vector<int> vec2;
-	vec1.assign(vec.begin(), vec.begin() + mij);
-	vec2.assign(vec.begin() + mij, vec.end());
 
-	for (int i = 0; i < vec1.size(); i++)
+	for (int i = 0; i < mij; i++)
 	{
-		for (int j = 0; j < vec2.size(); j++)
+		for (int j = mij; j < vec.size(); j++)
 		{
-			LOG(vec1[i], vec2[j]);
-			if (vec1[i] >= vec2[j])
+			LOG(vec[i], vec[j]);
+			if (vec[i] >= vec[j])
 			{
 				return false;
 			}
