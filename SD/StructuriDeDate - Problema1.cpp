@@ -1,7 +1,7 @@
 // Problema 1
 // Numim perechea (x,y) pereche ordonata daca x < y
 // a) Sa se verifice daca un vector contine doar perechi ordonate (care satisfac conditia de mai sus. (0.5p)
-// ??? vec = {1,2,3,4}, se verifica {1,2}, {2,3}, {3,4} sau {1,2}, {3,4}?
+// !!! vec = {1,2,3,4}, se verifica {1,2}, {2,3}, {3,4}
 // b) Sa se verifice daca oricare x din prima jumatate a vectorului formeaza o pereche ordonata cu oricare y din cea de-a doua jumatate. (1p)
 
 #include <iostream>
@@ -31,15 +31,9 @@ void Problema1A()
 
 bool ContineDoarPerechiOrdonate(std::vector<int>& vec)
 {
-	if (vec.size() % 2 == 1)
+	for (int i = 0; i < vec.size() - 1; i++)
 	{
-		std::cout << "Vectorul are numar impar de elemente." << std::endl;
-		return false;
-	}
-
-	for (int i = 0; i < vec.size(); i += 2)
-	{
-		LOG(vec[i], vec[i+1]);
+		LOG(vec[i], vec[i + 1]);
 		if (vec[i] >= vec[i + 1])
 		{
 			return false;
