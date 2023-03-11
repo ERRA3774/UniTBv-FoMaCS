@@ -5,27 +5,26 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #define LOG(x, y) std::cout <<"[D] " << x << " " << y << std::endl;
 
-void Problema2();
-bool EsteSuperior(std::vector<int>& vec);
+void problema2();
+bool esteSuperior(std::vector<int>& vec);
 
 int main()
 {
-	Problema2();
+	problema2();
 }
 
-void Problema2()
+void problema2()
 {
 	std::vector<int> vec{ 1,2,3,4,5,6,7,8,9 };
 
-	EsteSuperior(vec)
+	esteSuperior(vec)
 		? std::cout << "Superior." << std::endl
 		: std::cout << "Inferior." << std::endl;
 }
 
-bool EsteSuperior(std::vector<int>& vec)
+bool esteSuperior(std::vector<int>& vec)
 {
 	float media = 0;
 	int contor = 0;
