@@ -25,7 +25,7 @@ int main()
 
 void Problema6()
 {
-	std::vector<Punct> puncte{ {-6,3}, {1,0}, {0,6}, {5,5,}, {1,1}, {2,2}, {-4,-1}, {0,0}, {0,1}, {3,3} };
+	std::vector<Punct> puncte{ {-6,3}, {1,0}, {0,6}, {5,5}, {1,1}, {2,2}, {-4,-1}, {0,0}, {0,1}, {3,3} };
 	bool existaDreptunghi = false;
 
 	if (puncte.size() < 4)
