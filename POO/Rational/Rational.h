@@ -5,7 +5,7 @@ class Rational
 {
 private:
 	int nr, num;
-	int cmmdc(int nr, int num);							// helper
+	int cmmdc(int nr, int num);				// helper
 public:
 	Rational();
 	Rational(int Nr, int Num);
@@ -15,18 +15,18 @@ public:
 	void setNum(int Num);
 	void reductie();
 
-	Rational operator+(Rational r);						// r1 + r2
-	Rational operator-(Rational r);						// r1 - r2
-	Rational operator*(Rational r);						// r1 * r2
-	Rational operator/(Rational r);						// r1 / r2
+	Rational operator+(Rational r);				// r1 + r2
+	Rational operator-(Rational r);				// r1 - r2
+	Rational operator*(Rational r);				// r1 * r2
+	Rational operator/(Rational r);				// r1 / r2
 
-	Rational operator++();								// ++r
-	Rational operator--();								// --r
+	Rational operator++();					// ++r
+	Rational operator--();					// --r
 
-	Rational operator+(int myNr);						// r + c
-	Rational operator-(int myNr);						// r - c
-	Rational operator*(int myNr);						// r * c
-	Rational operator/(int myNr);						// r / c
+	Rational operator+(int myNr);				// r + c
+	Rational operator-(int myNr);				// r - c
+	Rational operator*(int myNr);				// r * c
+	Rational operator/(int myNr);				// r / c
 
 	friend Rational operator+(int myNr, Rational r);	// c + r
 	friend Rational operator-(int myNr, Rational r);	// c - r
