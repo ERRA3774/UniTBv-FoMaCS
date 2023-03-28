@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#define ASSERT(x,y) (x == y) ? std::cout << "Test 1 Pass." << std::endl : std::cout << "Test 1 Failed" << std::endl;
+#define ASSERT(x,y) (x == y) ? std::cout << "Test Passed!" << std::endl : std::cout << "Test Failed!" << std::endl;
 
 constexpr int INF = 30;
 constexpr int SUP = 80;
