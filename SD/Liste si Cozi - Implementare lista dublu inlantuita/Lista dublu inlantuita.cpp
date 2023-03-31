@@ -2,7 +2,6 @@
 #include <string>
 #include <sstream>
 #include "conio.h"
-
 struct Node
 {
 	int data;
@@ -421,11 +420,13 @@ int main()
 		case 3:
 			subMenu = true;
 			system("cls");
+			std::cout << "Push Back" << std::endl;
 			do {
 				std::cout << "push_back()> ";
 				std::getline(std::cin, input);
 				std::istringstream(input) >> data;
 				list.push_back(data);
+				std::cout << "Pushed back " << data << std::endl;
 				list.print();
 				std::cout << "Press ESC now to return." << std::endl;
 				if (_getch() == ESC) {
@@ -437,12 +438,13 @@ int main()
 		case 4:
 			subMenu = true;
 			system("cls");
-			std::cout << "Press ESC to exit" << std::endl;
+			std::cout << "Push Front" << std::endl;
 			do {
 				std::cout << "push_front()> ";
 				std::getline(std::cin, input);
 				std::istringstream(input) >> data;
 				list.push_front(data);
+				std::cout << "Pushed front " << data << std::endl;
 				list.print();
 				std::cout << "Press ESC now to return." << std::endl;
 				if (_getch() == ESC) {
@@ -454,9 +456,10 @@ int main()
 		case 5:
 			subMenu = true;
 			system("cls");
-			std::cout << "Press ESC to exit" << std::endl;
+			std::cout << "Pop Back" << std::endl;
 			do {
 				std::cout << "pop_back()> ";
+				std::cout << "Popped " << list.tail << std::endl;
 				list.pop_back();
 				list.print();
 				std::cout << "Press ESC now to return." << std::endl;
@@ -469,9 +472,11 @@ int main()
 		case 6:
 			subMenu = true;
 			system("cls");
+			std::cout << "Pop Front" << std::endl;
 			std::cout << "pop_front()> ";
 			do {
 				std::cout << "pop_back()> ";
+				std::cout << "Popped " << list.head << std::endl;
 				list.pop_front();
 				list.print();
 				std::cout << "Press ESC now to return." << std::endl;
@@ -483,6 +488,7 @@ int main()
 
 		case 7:
 			system("cls");
+			std::cout << "Find " << std::endl;
 			std::cout << "find()> ";
 			std::getline(std::cin, input);
 			std::istringstream(input) >> data;
@@ -492,6 +498,7 @@ int main()
 
 		case 8:
 			system("cls");
+			std::cout << "Erase" << std::endl;
 			std::cout << "erase()> ";
 			std::getline(std::cin, input);
 			std::istringstream(input) >> data;
@@ -501,6 +508,7 @@ int main()
 
 		case 9:
 			system("cls");
+			std::cout << "Remove" << std::endl;
 			list.print();
 			std::cout << "remove()> ";
 			std::getline(std::cin, input);
@@ -512,8 +520,8 @@ int main()
 		case 10:
 			subMenu = true;
 			system("cls");
+			std::cout << "Insert" << std::endl;
 			list.print();
-			std::cout << "Press ESC to exit" << std::endl;
 			do {
 				std::cout << "insert()> Node:";
 				std::getline(std::cin, nodeInput);
@@ -532,6 +540,7 @@ int main()
 
 		case 11:
 			system("cls");
+			std::cout << "Empty" << std::endl;
 			std::cout << "empty()> ";
 			list.print();
 			list.empty();
@@ -540,6 +549,7 @@ int main()
 
 		case 12:
 			system("cls");
+			std::cout << "Clear" << std::endl;
 			list.print();
 			std::cout << "clear()> ";
 			list.clear();
@@ -548,14 +558,15 @@ int main()
 
 		case 13:
 			system("cls");
-			std::cout << "print()> " << listName;
+			std::cout << "Print" << std::endl;
+			std::cout << "print()> " << listName << " ";
 			list.print();
 			_getch();
 			break;
 
 		case 14:
 			system("cls");
-			std::cout << "size()> "  << listName << list.size();
+			std::cout << "size()> "  << listName << " " << list.size();
 			_getch();
 			break;
 
