@@ -1,48 +1,63 @@
 // Problema 2
 // Sa se verifice si sa se afiseze daca un vector este superior sau inferior
 // Un vector este superior daca acesta contine mai multe elemente cu valoarea mai mare decat media aritmetica a intregului vector si inferior altfel. (1p)
-// ??? vec = {1,9,9,9}, media = 7, vectorul contine 3 elemente mai mari ca 7 => superior?
 
 #include <iostream>
 #include <vector>
-#define LOG(x, y) std::cout <<"[D] " << x << " " << y << std::endl;
+#include <algorithm>
+#define ASSERT(x,y) (x == y) ? std::cout << "Test Passed!" << std::endl : std::cout << "Test Failed!"<< std::endl;
 
 void problema2();
-bool esteSuperior(std::vector<int>& vec);
+bool esteSuperior(std::vector<int> vec);
+void tests();
 
 int main()
 {
-	problema2();
+	tests();
 }
 
 void problema2()
 {
-	std::vector<int> vec{ 1,2,3,4,5,6,7,8,9 };
+	std::vector<int> vec{ 1,9,9,9,9 };
 
 	esteSuperior(vec)
 		? std::cout << "Superior." << std::endl
 		: std::cout << "Inferior." << std::endl;
 }
 
-bool esteSuperior(std::vector<int>& vec)
+bool esteSuperior(std::vector<int> vec)
 {
 	float media = 0;
-	int contor = 0;
+	int contorMici = 0;
+	int contorMari = 0;
 
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
+	for (int i = 0; i < vec.size(); i++)
 	{
-		media += *it;
+		media += vec[i];
 	}
 
-	media /= vec.size();
+	media = media / vec.size();
 
-	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
+	for (int i = 0; i < vec.size(); i++)
 	{
-		if (*it > media)
+		if (vec[i] > media)
 		{
-			contor++;
+			contorMari++;
+		}
+		else
+		{
+			contorMici++;
 		}
 	}
 
-	return contor > media;
+	return contorMari > contorMici;
+}
+
+void tests()
+{
+	std::vector<int> vec0{1,9,9,9};
+	ASSERT(esteSuperior(vec0), true);
+
+	std::vector<int> vec1{ 1,2,3,4,5,6,7,8,9 };
+	ASSERT(esteSuperior(vec1), false);
 }
