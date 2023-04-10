@@ -15,7 +15,7 @@
 // 4. permiteti parcurgerea si afisarea perechilor <cheie, valoare> pentru toate elementele din tabela. (3p)
 // +.5p pentru implementarea unei functii de hashing pentru siruri de caractere
 
-#include "HashTable.h"
+#include "TabeleDeDispersie_Problema1_HashTable.h"
 #include <sstream>
 #include "conio.h"
 constexpr int ESC = 27;
