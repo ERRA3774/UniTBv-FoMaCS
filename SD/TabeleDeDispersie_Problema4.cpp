@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <unordered_map>
+#include <unordered_set>
 #include <list>
 #include <string>
 #include <sstream>
@@ -20,7 +21,7 @@ static constexpr auto BOXING = "Boxing";
 static constexpr auto FENCING = "Fencing";
 static constexpr auto GOLF = "Golf";
 static constexpr auto SWIMMING = "Swimming";
-static constexpr auto MULTIPLE = "Multiple";
+static constexpr auto EXTRA = "Extra";
 
 static constexpr int KEY_ESC = 27;
 static constexpr int KEY_Y = 121;
@@ -32,16 +33,15 @@ void menuBoxing(std::string username, std::list<std::string>& boxing, std::unord
 void menuGolf(std::string username, std::list<std::string>& golf, std::unordered_map<std::string, std::list<std::string>>& map);
 void menuFencing(std::string username, std::list<std::string>& fencing, std::unordered_map<std::string, std::list<std::string>>& map);
 void menuSwimming(std::string username, std::list<std::string>& swimming, std::unordered_map<std::string, std::list<std::string>>& map);
-void menuAll(std::string username, std::list<std::string>& all, std::unordered_map<std::string, std::list<std::string>>& map);
-void menuOutput(std::string username, std::list<std::string>& all, std::unordered_map<std::string, std::list<std::string>>& map);
-void menuMultiple(std::string username, std::list<std::string>& multiple, std::unordered_map<std::string, std::list<std::string>>& map);
+void menuAll(std::string username, std::list<std::string>& all, std::unordered_map<std::string, std::list<std::string>>& map, std::unordered_map<std::string, std::list<std::string>>& extra);
+void menuOutput(std::string username, std::list<std::string>& all, std::unordered_map<std::string, std::list<std::string>>& map, std::unordered_map<std::string, std::list<std::string>>& extra);
 void menuExit(bool& exit);
 
-std::list<std::string> listOfParticipantsFromFile(std::string path);
+std::list<std::string> participantsFromFile(std::string path);
 void mapParticipants(std::string fileName, std::list<std::string>& list, std::unordered_map<std::string, std::list<std::string>>& map);
-std::list<std::string> listOfParticipantsAtMultipleCompetitions(std::list<std::string> list, std::unordered_map<std::string, std::list<std::string>>& map);
-void outputCompetition(std::string fileName, std::unordered_map<std::string, std::list<std::string>>& mappedParticipants);
-void print(std::unordered_map<std::string, std::list<std::string>>& mappedParticipants);
+void mapExtraParticipants(std::unordered_map<std::string, std::list<std::string>>& map);
+void outputCompetition(std::string fileName, std::unordered_map<std::string, std::list<std::string>>& map);
+void print(std::unordered_map<std::string, std::list<std::string>>& map);
 
 std::string toString(std::list<std::string> list);
 
@@ -64,9 +64,9 @@ void initMenu()
 	std::list<std::string> golf;
 	std::list<std::string> fencing;
 	std::list<std::string> swimming;
-	std::list<std::string> multiple;
 
-	std::unordered_map<std::string, std::list<std::string>> mappedParticipants;
+	std::unordered_map<std::string, std::list<std::string>> map;
+	std::unordered_map<std::string, std::list<std::string>> extra;
 	do
 	{
 		option = 0;
@@ -79,27 +79,24 @@ void initMenu()
 			menuCustomize(username);
 			break;
 		case 2:
-			menuBoxing(username, boxing, mappedParticipants);
+			menuBoxing(username, boxing, map);
 			break;
 		case 3:
-			menuGolf(username, golf, mappedParticipants);
+			menuGolf(username, golf, map);
 			break;
 		case 4:
-			menuFencing(username, fencing, mappedParticipants);
+			menuFencing(username, fencing, map);
 			break;
 		case 5:
-			menuSwimming(username, swimming, mappedParticipants);
+			menuSwimming(username, swimming, map);
 			break;
 		case 6:
-			menuAll(username, all, mappedParticipants);
+			menuAll(username, all, map, extra);
 			break;
 		case 7:
-			menuOutput(username, all, mappedParticipants);
+			menuOutput(username, all, map, extra);
 			break;
 		case 8:
-			menuMultiple(username, multiple, mappedParticipants);
-			break;
-		case 9:
 			menuExit(exit);
 			break;
 		}
@@ -166,11 +163,13 @@ void menuBoxing(std::string username, std::list<std::string>& boxing, std::unord
 		switch (option)
 		{
 		case 1:
-			boxing = listOfParticipantsFromFile(BOXING);
+			boxing = participantsFromFile(BOXING);
+			std::cout << "List of " << BOXING << " participants: " << std::endl;
 			std::cout << toString(boxing) << std::endl;
 			break;
 		case 2:
 			mapParticipants(BOXING, boxing, map);
+			std::cout << "Uploaded " << BOXING << " participants." << std::endl;
 			break;
 		}
 		std::cout << "Press ESC to continue." << std::endl;
@@ -197,11 +196,13 @@ void menuGolf(std::string username, std::list<std::string>& golf, std::unordered
 		switch (option)
 		{
 		case 1:
-			golf = listOfParticipantsFromFile(GOLF);
+			golf = participantsFromFile(GOLF);
+			std::cout << "List of " << GOLF << " participants: " << std::endl;
 			std::cout << toString(golf) << std::endl;
 			break;
 		case 2:
 			mapParticipants(GOLF, golf, map);
+			std::cout << "Uploaded " << GOLF << " participants." << std::endl;
 			break;
 		}
 		std::cout << "Press ESC to continue." << std::endl;
@@ -228,11 +229,13 @@ void menuFencing(std::string username, std::list<std::string>& fencing, std::uno
 		switch (option)
 		{
 		case 1:
-			fencing = listOfParticipantsFromFile(FENCING);
+			fencing = participantsFromFile(FENCING);
+			std::cout << "List of " << FENCING << " participants: " << std::endl;
 			std::cout << toString(fencing) << std::endl;
 			break;
 		case 2:
 			mapParticipants(FENCING, fencing, map);
+			std::cout << "Uploaded " << FENCING << " participants." << std::endl;
 			break;
 		}
 		std::cout << "Press ESC to continue." << std::endl;
@@ -259,11 +262,13 @@ void menuSwimming(std::string username, std::list<std::string>& swimming, std::u
 		switch (option)
 		{
 		case 1:
-			swimming = listOfParticipantsFromFile(SWIMMING);
+			swimming = participantsFromFile(SWIMMING);
+			std::cout << "List of " << SWIMMING << " participants: " << std::endl;
 			std::cout << toString(swimming) << std::endl;
 			break;
 		case 2:
 			mapParticipants(SWIMMING, swimming, map);
+			std::cout << "Uploaded " << SWIMMING << " participants." << std::endl;
 			break;
 		}
 		std::cout << "Press ESC to continue." << std::endl;
@@ -271,14 +276,14 @@ void menuSwimming(std::string username, std::list<std::string>& swimming, std::u
 	return;
 }
 
-void menuAll(std::string username, std::list<std::string>& all, std::unordered_map<std::string, std::list<std::string>>& map)
+void menuAll(std::string username, std::list<std::string>& all, std::unordered_map<std::string, std::list<std::string>>& map, std::unordered_map<std::string, std::list<std::string>>& extra)
 {
 	system("cls");
 	std::cout
 		<< "\t\t+------------------------------------------+\n"
 		<< "\t\t|                   All                    |\n"
 		<< "\t\t|         1. Check participants            |\n"
-		<< "\t\t|         2. Upload to Contenst            |\n"
+		<< "\t\t|         2. Check extra participants      |\n"
 		<< "\t\t+------------------------------------------+\n";
 	do
 	{
@@ -290,11 +295,14 @@ void menuAll(std::string username, std::list<std::string>& all, std::unordered_m
 		switch (option)
 		{
 		case 1:
-			all = listOfParticipantsFromFile(ALL);
-			std::cout << toString(all) << std::endl;
+			std::cout << "List of " << ALL << " mapped participants: " << std::endl;
+			print(map);
 			break;
 		case 2:
-			mapParticipants(ALL, all, map);
+			std::cout << "List of " << EXTRA << " extra participants: " << std::endl;
+			extra = map;
+			mapExtraParticipants(extra);
+			print(extra);
 			break;
 		}
 		std::cout << "Press ESC to continue." << std::endl;
@@ -302,14 +310,16 @@ void menuAll(std::string username, std::list<std::string>& all, std::unordered_m
 	return;
 }
 
-void menuOutput(std::string username, std::list<std::string>& all, std::unordered_map<std::string, std::list<std::string>>& map)
+void menuOutput(std::string username, std::list<std::string>& all, std::unordered_map<std::string, std::list<std::string>>& map, std::unordered_map<std::string, std::list<std::string>>& extra)
 {
 	system("cls");
 	std::cout
 		<< "\t\t+------------------------------------------+\n"
 		<< "\t\t|                 Output                   |\n"
-		<< "\t\t|         1. Check participants            |\n"
-		<< "\t\t|         2. Output mapped file            |\n"
+		<< "\t\t|         1. Check all participants        |\n"
+		<< "\t\t|         2. Check extra participants      |\n"
+		<< "\t\t|         3. Output all file               |\n"
+		<< "\t\t|         4. Output extra file             |\n"
 		<< "\t\t+------------------------------------------+\n";
 	do
 	{
@@ -321,49 +331,24 @@ void menuOutput(std::string username, std::list<std::string>& all, std::unordere
 		switch (option)
 		{
 		case 1:
-			all = listOfParticipantsFromFile(ALL);
-			std::cout << toString(all) << std::endl;
+			print(map);
 			break;
 		case 2:
+			print(extra);
+			break;
+		case 3:
 			outputCompetition(ALL, map);
+			std::cout << ALL << EXT << " file has been updated." << std::endl;
+			break;
+		case 4:
+			outputCompetition(EXTRA, extra);
+			std::cout << EXTRA  << EXT << " file has been updated." << std::endl;
 			break;
 		}
 		std::cout << "Press ESC to continue." << std::endl;
 	} while (_getch() != KEY_ESC);
 	return;
 }
-
-void menuMultiple(std::string username, std::list<std::string>& multiple, std::unordered_map<std::string, std::list<std::string>>& map)
-{
-	system("cls");
-	std::cout
-		<< "\t\t+------------------------------------------+\n"
-		<< "\t\t|                 Multiple                 |\n"
-		<< "\t\t|         1. Check participants            |\n"
-		<< "\t\t|         2. Output mapped file            |\n"
-		<< "\t\t+------------------------------------------+\n";
-	do
-	{
-		int option = 0;
-		std::string input = "";
-		std::cout << "<" << username << "> ";
-		std::getline(std::cin, input);
-		std::istringstream(input) >> option;
-		switch (option)
-		{
-		case 1:
-			multiple = listOfParticipantsAtMultipleCompetitions(multiple, map);
-			std::cout << toString(multiple) << std::endl;
-			break;
-		case 2:
-			outputCompetition(MULTIPLE, map);
-			break;
-		}
-		std::cout << "Press ESC to continue." << std::endl;
-	} while (_getch() != KEY_ESC);
-	return;
-}
-
 
 void menuExit(bool& exit)
 {
@@ -385,7 +370,7 @@ void menuExit(bool& exit)
 	return;
 }
 
-std::list<std::string> listOfParticipantsFromFile(std::string fileName)
+std::list<std::string> participantsFromFile(std::string fileName)
 {
 	std::ifstream fin(fileName + EXT);
 
@@ -403,7 +388,6 @@ std::list<std::string> listOfParticipantsFromFile(std::string fileName)
 		std::getline(fin, line);
 		if (line != "")
 		{
-			std::cout << "[I] Read " << line << std::endl;
 			list.emplace_back(line);
 		}
 	}
@@ -421,28 +405,50 @@ void mapParticipants(std::string fileName, std::list<std::string>& list, std::un
 		return;
 	}
 
-	std::string key = fileName;
+	std::string sport = fileName;
 
-	for (auto it = list.begin(); it != list.end(); it++)
+	for (auto& person : list)
 	{
-		map[fileName].emplace_back(*it);
+		map[sport].emplace_back(person);
 	}
 
 	return;
 }
 
-void outputCompetition(std::string fileName, std::unordered_map<std::string, std::list<std::string>>& mappedParticipants)
+void mapExtraParticipants(std::unordered_map<std::string, std::list<std::string>>& map)
 {
-	if (mappedParticipants.empty())
+	std::unordered_map<std::string, std::list<std::string>> extra;
+	std::unordered_map<std::string, int> count;
+
+	for (const auto& sport : map) {
+		for (const auto& person : sport.second) {
+			count[person]++;
+		}
+	}
+
+	for (const auto& sport : map) {
+		std::string sportName = sport.first;
+		for (const auto& person : sport.second) {
+			if (count[person] > 1) {
+				extra[person].emplace_back(sportName);
+			}
+		}
+	}
+
+	map = extra;
+}
+
+void outputCompetition(std::string fileName, std::unordered_map<std::string, std::list<std::string>>& map)
+{
+	if (map.empty())
 	{
 		std::cout << "[I] The map is empty" << std::endl;
 		return;
 	}
 
-	fileName = ALL;
 	std::ofstream fout(fileName + EXT);
 
-	for (auto& kv : mappedParticipants)
+	for (auto& kv : map)
 	{
 		fout << kv.first << ":" << toString(kv.second) << '\n';
 	}
@@ -451,13 +457,6 @@ void outputCompetition(std::string fileName, std::unordered_map<std::string, std
 
 	return;
 }
-
-// TODO
-std::list<std::string> listOfParticipantsAtMultipleCompetitions(std::list<std::string> list, std::unordered_map<std::string, std::list<std::string>>& map) 
-{
-	return list;
-}
-
 
 std::string toString(std::list<std::string> list)
 {
@@ -484,14 +483,13 @@ std::string toString(std::list<std::string> list)
 	return s;
 }
 
-void print(std::unordered_map<std::string, std::list<std::string>>& mappedParticipants)
+void print(std::unordered_map<std::string, std::list<std::string>>& map)
 {
-	for (auto& kv : mappedParticipants)
+	for (auto& kv : map)
 	{
 		std::cout
 			<< "Key: " << kv.first << '\n'
-			<< "Value: " << toString(kv.second) << '\n'
-			<< '\n';
+			<< "Value: " << toString(kv.second) << '\n';
 	}
 	std::cout << std::endl;
 	return;
