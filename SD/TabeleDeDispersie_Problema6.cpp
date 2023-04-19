@@ -11,19 +11,18 @@
 #include <unordered_map>
 #include <tuple>
 #include <conio.h>
-constexpr int TARGET = 0;
 
 std::vector<std::tuple<int, int, int, int>> nullSumIndexes(std::vector<int> A, std::vector<int> B, std::vector<int> C, std::vector<int> D)
 {
 	std::vector<std::tuple<int, int, int, int>> indexes{};
-	std::unordered_map<int, std::vector<std::pair<int, int>>> mapAB{};
-	std::unordered_map<int, std::vector<std::pair<int, int>>> mapCD{};
+	std::unordered_map<int, std::vector<std::pair<int, int>>> map{};
 
 	for (int i = 0; i < A.size(); i++)
 	{
 		for (int j = 0; j < B.size(); j++)
 		{
-			mapAB[A[i] + B[j]].emplace_back(std::make_pair(i, j));
+			int sum = A[i] + B[j];
+			map[sum].emplace_back(std::make_pair(i, j));
 		}
 	}
 
@@ -31,22 +30,12 @@ std::vector<std::tuple<int, int, int, int>> nullSumIndexes(std::vector<int> A, s
 	{
 		for (int l = 0; l < D.size(); l++)
 		{
-			mapCD[C[k] + D[l]].emplace_back(std::make_pair(k, l));
-		}
-	}
-
-	for (auto& sum1 : mapAB)
-	{
-		for (auto& sum2 : mapCD)
-		{
-			if (sum1.first + sum2.first == TARGET)
+			int sum = -(C[k] + D[l]);
+			if (map.find(sum) != map.end())
 			{
-				indexes.emplace_back(std::make_tuple(
-					sum1.second.data()->first,
-					sum1.second.data()->second,
-					sum2.second.data()->first,
-					sum2.second.data()->second)
-				);
+				int i = map[sum].data()->first;
+				int j = map[sum].data()->second;
+				indexes.emplace_back(std::make_tuple(i, j, k, l));
 			}
 		}
 	}
@@ -62,8 +51,7 @@ void printIndexes(std::vector<std::tuple<int, int, int, int>> vec)
 			<< "A[" << std::get<0>(el) << "]" << " + "
 			<< "B[" << std::get<1>(el) << "]" << " + "
 			<< "C[" << std::get<2>(el) << "]" << " + "
-			<< "D[" << std::get<3>(el) << "]" << " = " 
-			<< TARGET 
+			<< "D[" << std::get<3>(el) << "]" << " = 0" 
 			<< "\n------------------------------------" << std::endl;
 	}
 	return;
