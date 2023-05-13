@@ -12,16 +12,16 @@ class SyntaxTree
 public:
 	struct Node
 	{
-		char info;
+		char data;
 		Node* left;
 		Node* right;
 
-		Node(char ch, Node* l, Node* r) : info(ch), left(l), right(r) {}
+		Node(char d) : data(d), left(nullptr), right(nullptr) {}
+		Node(char d, Node* l, Node* r) : data(d), left(l), right(r) {}
 	};
 
-	SyntaxTree();
 	SyntaxTree(Expression expr);
-
+	
 	void Evaluate();
 	void Display();
 

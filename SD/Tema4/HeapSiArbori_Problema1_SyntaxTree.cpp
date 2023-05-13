@@ -1,9 +1,5 @@
 #include "HeapSiArbori_Problema1_SyntaxTree.h"
 
-SyntaxTree::SyntaxTree() : m_Root(nullptr), m_Size(0), m_Height(0)
-{
-}
-
 SyntaxTree::SyntaxTree(Expression expr) : m_Root(nullptr), m_Size(0), m_Height(0)
 {
 	stack<Node*> nodes;
@@ -15,7 +11,7 @@ SyntaxTree::SyntaxTree(Expression expr) : m_Root(nullptr), m_Size(0), m_Height(0
 		{
 			if (IsVariable(ch)) variables[ch] = 0.0;
 
-			Node* var = new Node(ch, nullptr, nullptr);
+			Node* var = new Node(ch);
 			nodes.push(var);
 			m_Size++;
 		}
@@ -57,20 +53,20 @@ double SyntaxTree::EvaluateNode(Node* curr)
 {
 	if (curr == nullptr) return 0.0;
 
-	if (variables.find(curr->info) != variables.end())
+	if (variables.find(curr->data) != variables.end())
 	{
-		return variables[curr->info];
+		return variables[curr->data];
 	}
 
 	if (curr->left == nullptr && curr->right == nullptr)
 	{
-		return curr->info - '0';
+		return curr->data - '0';
 	}
 
 	double l = EvaluateNode(curr->left);
 	double r = EvaluateNode(curr->right);
 
-	switch (curr->info)
+	switch (curr->data)
 	{
 	case '+':
 		return l + r;
@@ -134,7 +130,7 @@ void SyntaxTree::PrintNode(Node* curr, string format, bool isLast)
 		format += " |    ";
 	}
 
-	cout << '(' << curr->info << ')' << endl;
+	cout << '(' << curr->data << ')' << endl;
 
 	PrintNode(curr->right, format, curr->left == nullptr);
 	PrintNode(curr->left, format, true);
