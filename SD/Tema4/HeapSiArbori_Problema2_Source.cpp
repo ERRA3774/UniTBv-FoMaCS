@@ -112,7 +112,7 @@ BinaryTree::BinaryTree(string path) : m_Root(nullptr), m_Size(0), m_Height(0)
 			queue.push(lNode);
 		}
 
-		if (fin >> ch && ch!= '#')
+		if (fin >> ch && ch != '#')
 		{
 			Node* rNode = new Node(ch);
 			curr->right = rNode;
