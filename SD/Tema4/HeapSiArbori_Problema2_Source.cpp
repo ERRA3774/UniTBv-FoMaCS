@@ -105,24 +105,18 @@ BinaryTree::BinaryTree(string path) : m_Root(nullptr), m_Size(0), m_Height(0)
 		Node* curr = queue.front();
 		queue.pop();
 
-		if (fin >> ch)
+		if (fin >> ch && ch != '#')
 		{
-			if (ch != '#')
-			{
-				Node* lNode = new Node(ch);
-				curr->left = lNode;
-				queue.push(lNode);
-			}
+			Node* lNode = new Node(ch);
+			curr->left = lNode;
+			queue.push(lNode);
 		}
 
-		if (fin >> ch)
+		if (fin >> ch && ch!= '#')
 		{
-			if (ch != '#')
-			{
-				Node* rNode = new Node(ch);
-				curr->right = rNode;
-				queue.push(rNode);
-			}
+			Node* rNode = new Node(ch);
+			curr->right = rNode;
+			queue.push(rNode);
 		}
 	}
 
