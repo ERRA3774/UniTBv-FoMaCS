@@ -11,14 +11,12 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <string>
 #include <stack>
 #include <queue>
 
 using std::make_pair;
 using std::ifstream;
-using std::vector;
 using std::string;
 using std::stack;
 using std::queue;
@@ -85,40 +83,46 @@ BinaryTree::BinaryTree(string path) : m_Root(nullptr), m_Size(0), m_Height(0)
 
 	if (!fin.is_open())
 	{
-		cout << "Coult not open file." << path << endl;
+		cout << "Could not open file from " << path << endl;
 		return;
 	}
 
 	char ch;
-	vector<char> vec;
-	while (fin >> ch)
+	queue<Node*> queue;
+	if (fin >> ch)
 	{
-		vec.emplace_back(ch);
+		m_Root = new Node(ch);
+		queue.push(m_Root);
+	}
+	else
+	{
+		cout << "The file is empty." << endl;
+		return;
 	}
 
-	m_Root = new Node(vec[0]);
-	m_Size = 1;
-	queue<Node*> queue;
-	queue.push(m_Root);
-
-	int i = 1;
-	while (i < vec.size())
+	while (!fin.eof() && !queue.empty())
 	{
 		Node* curr = queue.front();
 		queue.pop();
 
-		if (i < vec.size())
+		if (fin >> ch)
 		{
-			curr->left = new Node(vec[i++]);
-			m_Size++;
-			queue.push(curr->left);
+			if (ch != '#')
+			{
+				Node* lNode = new Node(ch);
+				curr->left = lNode;
+				queue.push(lNode);
+			}
 		}
 
-		if (i < vec.size())
+		if (fin >> ch)
 		{
-			curr->right = new Node(vec[i++]);
-			m_Size++;
-			queue.push(curr->right);
+			if (ch != '#')
+			{
+				Node* rNode = new Node(ch);
+				curr->right = rNode;
+				queue.push(rNode);
+			}
 		}
 	}
 
