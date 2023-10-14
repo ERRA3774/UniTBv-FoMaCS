@@ -4,7 +4,7 @@
 #include <string>
 //#include <math.h>
 
-std::ifstream  fin("case.txt");
+std::ifstream fin("case.txt");
 
 struct casa
 {
